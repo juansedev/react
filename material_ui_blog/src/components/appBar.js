@@ -7,8 +7,8 @@ function NavBar({ nameCmp }) {
   return (
     <AppBar className={nameCmp} position="static">
       <Toolbar>
-        <Typography variant="h6" color="primary">
-          Blog
+        <Typography variant="h4" color="primary">
+          React Blog
         </Typography>
       </Toolbar>
     </AppBar>

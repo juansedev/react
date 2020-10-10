@@ -1,61 +1,47 @@
 import React from "react";
-import Typography from "@material-ui/core/Typography";
-//import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
-import Pagination from "@material-ui/lab/Pagination";
-import {
-  Container,
-  Grid,
-  Box,
-  /*Card,
-  CardActionArea,
-  CardActions,
-  CardMedia,
-  CardContent,
-  Avatar,*/
-} from "@material-ui/core";
+import { Container, Grid, Box, } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
+import Pagination from "@material-ui/lab/Pagination";
 import NavBar from "./components/appBar.js";
 import Hero from "./components/hero.js";
 import CardCmp from "./components/card.js";
 
-//import Typogra from "./components/typography.js";
 
+// Data to test the app
 const cardListData = [
   {
-    alt: "Contemplative Reptile",
+    alt: "comment / accessibility",
     id: 1,
     image:
-      "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
-    title: "Contemplative Reptile",
-    content1: "React useContext",
+      "https://images.unsplash.com/photo-1526498460520-4c246339dccb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
+    title: "React Native",
     content2:
-      "Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica",
+      "React Native is an open-source mobile application framework created by Facebook, Inc. [3] It is used to develop applications for Android...",
     img_author:
       "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
     name: "David Watts",
     date: "Oct 8, 2020",
   },
   {
-    alt: "Contemplative Reptile",
+    alt: "comment / accessibility",
     id: 2,
     image:
-      "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
-    title: "Contemplative Reptile",
-    content1: "React useContext",
+      "https://images.unsplash.com/photo-1593720219276-0b1eacd0aef4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=743&q=80",
+    title: "React",
     content2:
-      "Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica",
+      "React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render ...",
     img_author:
       "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
     name: "David Watts",
     date: "Oct 8, 2020",
   },
   {
-    alt: "Contemplative Reptile",
+    alt: "comment / accessibility",
     id: 3,
     image:
       "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
-    title: "Contemplative Reptile",
-    content1: "React useContext",
+    title: "React useContext",
     content2:
       "Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica",
     img_author:
@@ -64,12 +50,11 @@ const cardListData = [
     date: "Oct 8, 2020",
   },
   {
-    alt: "Contemplative Reptile",
+    alt: "comment / accessibility",
     id: 4,
     image:
-      "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
-    title: "Contemplative Reptile",
-    content1: "React useContext",
+      "https://rosolutions.com.mx/blog/wp-content/uploads/2019/06/1-y6C4nSvy2Woe0m7bWEn4BA.png",
+    title: "React Developer Tools",
     content2:
       "Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica",
     img_author:
@@ -79,13 +64,28 @@ const cardListData = [
   },
 ];
 
-const useStyles = makeStyles((theme) => ({
+/**
+  Link a style sheet with a function component using the hook pattern.
+  Arguments:
+  1-  styles (Function | Object): A function generating the styles or a styles object. It will be linked to the component.
+      Use the function signature if you need to have access to the theme. It's provided as the first argument.
+  2-  options (Object [optional]):
+        *  options.defaultTheme (Object [optional]): The default theme to use if a theme isn't supplied through a Theme Provider.
+        *  options.name (String [optional]): The name of the style sheet. Useful for debugging.
+        *  options.flip (Boolean [optional]): When set to false, this sheet will opt-out the rtl transformation. When set to true,
+        *  the styles are inversed. When set to null, it follows theme.direction.
+        *  The other keys are forwarded to the options argument of jss.createStyleSheet([styles], [options]).
+  Return:
+      hook: A hook. This hook can be used in a function component. The documentation often calls this returned hook useStyles.
+      It accepts one argument: the properties that will be used for "interpolation" in the style sheet.
+ */
+export const useStyles = makeStyles((theme) => ({
   appBar: {
     backgroundColor: "#fff",
   },
   hero: {
-    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-                      url('https://images.unsplash.com/photo-1558981852-426c6c22a060?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80')`,
+    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)),
+                      url('https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80')`,
     height: 500,
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
@@ -100,6 +100,7 @@ const useStyles = makeStyles((theme) => ({
       height: 300,
       fontSize: "3em",
     },
+    top: 0,
   },
   blogContainer: {
     paddingTop: theme.spacing(3),
@@ -110,6 +111,7 @@ const useStyles = makeStyles((theme) => ({
   },
   card: {
     maxWidth: "100%",
+    borderBlockColor: "#f555",
   },
   media: {
     height: 240,
@@ -130,126 +132,31 @@ const useStyles = makeStyles((theme) => ({
 
 function App() {
   const classes = useStyles();
+  /**
+   * --> Map Application
+   * NavBar component
+   * Hero Component
+   * Container Component
+   *  * Typography Component
+   *  * Grid Component
+   *    * CardCmp Component : In this component it maps all data input from an array, the array works
+   *                          as an API that returns a data in JSON Format.
+   *                          This component renders as many cards according to the number of objects in the JSON
+   *  * Box Component
+   *    * Pagination Component
+   */
   return (
     <div className="App">
       <NavBar nameCmp={classes.appBar}></NavBar>
       <Hero nameCmp={classes.hero}></Hero>
       <Container maxWidth="lg" className={classes.blogContainer}>
         <Typography variant="h4" className={classes.blogTitle}>
-          Articles
+          Posts
         </Typography>
         <Grid container spacing={3}>
           {cardListData.map((cardData) => (
             <CardCmp key={cardData.id} {...cardData} />
           ))}
-          {/*<Grid item xs={12} sm={6} md={4}>
-            <Card className={classes.card}>
-              <CardActionArea>
-                <CardMedia
-                  className={classes.media}
-                  component="img"
-                  alt="Contemplative Reptile"
-                  height="140"
-                  image="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
-                  title="Contemplative Reptile"
-                />
-                <CardContentCmp
-                  content1={"React useContext"}
-                  content2={`Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica`}
-                ></CardContentCmp>
-              </CardActionArea>
-              <CardActionsCmp
-                actionCmp={classes.cardActions}
-                authorCmp={classes.author}
-                img_author={
-                  "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
-                }
-                name={"David Watts"}
-                date={"Oct 8, 2020"}
-              ></CardActionsCmp>
-            </Card>
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <Card className={classes.card}>
-              <CardActionArea>
-                <CardMedia
-                  className={classes.media}
-                  component="img"
-                  alt="Contemplative Reptile"
-                  height="140"
-                  image="https://images.unsplash.com/photo-1508921234172-b68ed335b3e6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
-                  title="Contemplative Reptile"
-                />
-                <CardContentCmp
-                  content1={"React useContext"}
-                  content2={`Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text`}
-                ></CardContentCmp>
-              </CardActionArea>
-              <CardActionsCmp
-                actionCmp={classes.cardActions}
-                authorCmp={classes.author}
-                img_author={
-                  "https://images.unsplash.com/photo-1542103749-8ef59b94f47e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
-                }
-                name={"Martha Janes"}
-                date={"Apr 8, 2020"}
-              ></CardActionsCmp>
-            </Card>
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <Card className={classes.card}>
-              <CardActionArea>
-                <CardMedia
-                  className={classes.media}
-                  component="img"
-                  alt="Contemplative Reptile"
-                  height="140"
-                  image="https://images.unsplash.com/photo-1565843714144-d5a3292ae82d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1352&q=80"
-                  title="Contemplative Reptile"
-                />
-                <CardContentCmp
-                  content1={"React useContext"}
-                  content2={`Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text`}
-                ></CardContentCmp>
-              </CardActionArea>
-              <CardActionsCmp
-                actionCmp={classes.cardActions}
-                authorCmp={classes.author}
-                img_author={
-                  "https://images.unsplash.com/photo-1575632312417-71da8ed4992d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
-                }
-                name={"Laura Gil"}
-                date={"Jun 20, 2020"}
-              ></CardActionsCmp>
-            </Card>
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <Card className={classes.card}>
-              <CardActionArea>
-                <CardMedia
-                  className={classes.media}
-                  component="img"
-                  alt="Contemplative Reptile"
-                  height="140"
-                  image="https://images.unsplash.com/photo-1573140247632-f8fd74997d5c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
-                  title="Contemplative Reptile"
-                />
-                <CardContentCmp
-                  content1={"React useContext"}
-                  content2={`Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text`}
-                ></CardContentCmp>
-              </CardActionArea>
-              <CardActionsCmp
-                actionCmp={classes.cardActions}
-                authorCmp={classes.author}
-                img_author={
-                  "https://images.unsplash.com/photo-1573140247632-f8fd74997d5c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
-                }
-                name={"Laura Gil"}
-                date={"Jun 20, 2020"}
-              ></CardActionsCmp>
-            </Card>
-          </Grid>*/}
         </Grid>
         <Box my={4} className={classes.paginationContainer}>
           <Pagination count={10} />

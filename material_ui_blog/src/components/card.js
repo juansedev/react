@@ -1,68 +1,25 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import { Grid, Card, CardActionArea, CardMedia } from "@material-ui/core";
 import CardContentCmp from "../components/cardContent.js";
 import CardActionsCmp from "../components/cardActions.js";
+import { useStyles } from "../App.js";
 
-const useStyles = makeStyles((theme) => ({
-  appBar: {
-    backgroundColor: "#fff",
-  },
-  hero: {
-    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-                      url('https://images.unsplash.com/photo-1558981852-426c6c22a060?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80')`,
-    height: 500,
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",
-    position: "relative",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    color: "#fff",
-    fontSize: "4rem",
-    [theme.breakpoints.down("sm")]: {
-      height: 300,
-      fontSize: "3em",
-    },
-  },
-  blogContainer: {
-    paddingTop: theme.spacing(3),
-  },
-  blogTitle: {
-    fontWight: 800,
-    paddingBottom: theme.spacing(3),
-  },
-  card: {
-    maxWidth: "100%",
-  },
-  media: {
-    height: 240,
-  },
-  cardActions: {
-    display: "flex",
-    margin: "0 10px",
-    justifyContent: "space-between",
-  },
-  author: {
-    display: "flex",
-  },
-  paginationContainer: {
-    display: "flex",
-    justifyContent: "center",
-  },
-}));
-
-function cardCmp({
-  alt_comment,
-  image_bg,
-  title,
-  content1,
-  content2,
-  img_author,
-  name_author,
-  date,
-}) {
+/**
+ * The inputs of this function component allow you to send all the necessary information from higher levels of the code.
+ * This allows the reuse of this component, without repeating code.
+ *  * 
+ * Name: CardCmp - This function render a card the blog post
+ * @alt_cmp : Text to describe the blog image
+ * @image : Link to the blog image
+ * @title : Title to the card
+ * @content2 : Description of the card
+ * @img_author : Link to author profile image 
+ * @name : Name of the autor
+ * @date : Date of the post
+ * 
+ * Retunrn: A component render 
+ */
+function CardCmp({ alt_comment, image, title, content2, img_author, name, date, }) {
   const classes = useStyles();
   return (
     <Grid item xs={12} sm={6} md={4}>
@@ -73,11 +30,11 @@ function cardCmp({
             component="img"
             alt={alt_comment}
             height="140"
-            image={image_bg}
+            image={image}
             title={title}
           />
           <CardContentCmp
-            content1={content1}
+            content1={title}
             content2={content2}
           ></CardContentCmp>
         </CardActionArea>
@@ -85,7 +42,7 @@ function cardCmp({
           actionCmp={classes.cardActions}
           authorCmp={classes.author}
           img_author={img_author}
-          name={name_author}
+          name={name}
           date={date}
         ></CardActionsCmp>
       </Card>
@@ -93,4 +50,4 @@ function cardCmp({
   );
 }
 
-export default cardCmp;
+export default CardCmp;
